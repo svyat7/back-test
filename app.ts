@@ -1,18 +1,19 @@
-import { faker } from '@faker-js/faker';
-import { MongoClient } from 'mongodb';
-import dotenv from 'dotenv';
+import { faker } from "@faker-js/faker";
+import { Collection, Db, MongoClient } from "mongodb";
+import dotenv from "dotenv";
 dotenv.config();
 
-console.log(process.env.DB_URI);
-
-const client = new MongoClient(process.env.DB_URI as string)
-client.connect().then(() => {
-    console.log('Connected to MongoDB');
-}).catch((err) => {
+const client: MongoClient = new MongoClient(process.env.DB_URI as string);
+client
+  .connect()
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
     console.error(err);
-});
-const db = client.db();
-const customers = db.collection('customers');
+  });
+const db: Db = client.db();
+const customers: Collection<Customer> = db.collection("customers");
 
 setInterval(async () => {
   const customer = {
@@ -28,7 +29,6 @@ setInterval(async () => {
       country: faker.location.country(),
     },
     createdAt: new Date(),
-  };
+  } as Customer;
   await customers.insertOne(customer);
-  console.log(await customers.countDocuments());
 }, 200);

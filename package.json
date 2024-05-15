@@ -12,6 +12,11 @@
     "mongodb": "^6.6.1"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12"
+    "@types/node": "^20.12.12",
+    "prettier": "^3.2.5"
+  },
+  "scripts": {
+    "start": "ts-node app.ts",
+    "format": "prettier --write ."
   }
 }
