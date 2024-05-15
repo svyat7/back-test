@@ -1,0 +1,6 @@
+giterminismConfigVersion: "1"
+config:
+  goTemplateRendering:
+    allowEnvVariables:
+      - CI_JOB_TOKEN
+      - DB_URI

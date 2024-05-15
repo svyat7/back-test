@@ -1,6 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { Collection, Db, MongoClient } from "mongodb";
+
 import dotenv from "dotenv";
+import { Customer } from "./interfaces";
 dotenv.config();
 
 const client: MongoClient = new MongoClient(process.env.DB_URI as string);

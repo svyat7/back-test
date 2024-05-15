@@ -1,0 +1,10 @@
+project: foundraise
+configVersion: 1
+---
+image: foundraise
+dockerfile: Dockerfile
+args:
+  {
+    CI_JOB_TOKEN: {{ env "CI_JOB_TOKEN" }},
+    DB_URI: {{ env "DB_URI" }},
+  }

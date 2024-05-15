@@ -1,0 +1,25 @@
+stages:
+  - build
+  - deploy
+
+image: registry.werf.io/werf/werf
+
+variables:
+  WERF_REPO: registry.gitlab.com/svyatglukhov/foundraise:foundraise
+  WERF_IMAGES_CLEANUP_PASSWORD: ${CI_JOB_TOKEN}
+
+before_script:
+  - type werf && source $(werf ci-env gitlab --as-file)
+
+Build and Publish:
+  stage: build
+  script:
+    - werf build
+  only: [main, /^devops/.*$/]
+  except: [schedules]
+
+.base_deploy:
+  stage: deploy
+  script:
+    - werf kubectl config use-context svyatglukhov/foundraise:foundraise
+    - werf converge --require-built-images --set "env_url=$(echo ${CI_ENVIRONMENT_URL} | cut -d / -f 3)"

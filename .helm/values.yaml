@@ -1,0 +1,20 @@
+app:
+  name: app
+  env:
+    DB_URI: "" # Injected by gitlab ci from gitlab secret
+    NODE_ENV: "dev"
+  replicas: 1
+  resources:
+    requests:
+      cpu: 50m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
+tolerations:
+  - key: 'svyat-test-zone1/env'
+    operator: 'Equal'
+    value: 'dev'
+    effect: 'NoSchedule'
+nodeSelector:
+  datalouna.io/env: dev

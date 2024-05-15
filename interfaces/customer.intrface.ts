@@ -7,7 +7,7 @@ interface Address {
   country: string;
 }
 
-interface Customer {
+export interface Customer {
   firstName: string;
   lastName: string;
   email: string;

@@ -9,14 +9,18 @@
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
     "dotenv": "^16.4.5",
-    "mongodb": "^6.6.1"
+    "mongodb": "^6.6.1",
+    "nodemon": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
     "prettier": "^3.2.5"
   },
   "scripts": {
-    "start": "ts-node app.ts",
+    "app": "nodemon app.ts",
+    "sync": "nodemon sync.ts",
+    "sync:reindex": "ts-node sync.ts --full-reindex",
+    "run-rs": "run-rs",
     "format": "prettier --write ."
   }
 }
