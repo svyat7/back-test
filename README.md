@@ -39,7 +39,7 @@ yarn run format
 
 ## Contact
 
-If you have any questions, please feel free to contact me at datalouna.io@gmail.com.
+If you have any questions, please feel free to contact me at svyatglukhov@gmail.com
 
 ## PS
 I created CI/CD for testing in Kubernetes, as it's much faster than local testing.
